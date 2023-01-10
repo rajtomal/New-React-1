@@ -36,16 +36,34 @@ class App extends Component{
     })
   }
 
+  
+
+
+
   render(){
+
+    const bookStore = this.state.books;
+
+    const books = bookStore.map(item => {
+      return(
+        <Book 
+          bookname= {item.bookname}
+          writer= {item.writer}                                                             
+        />
+      )
+    })
+    console.log(books)
+
+
+
+
+
     return (
       <div className="App">
         <h1>Book List</h1>
         <button onClick={this.reAsign}>Change Book</button>
         <input type="text" onChange={this.changeInput}/>
-        <Book bookname={this.state.books[0].bookname} writer={this.state.books[0].writer} inputfill = {this.changeInput} />
-        <Book bookname={this.state.books[1].bookname} writer={this.state.books[1].writer} />
-        <Book bookname={this.state.books[2].bookname} writer={this.state.books[2].writer} />
-        <Book bookname={this.state.books[3].bookname} writer={this.state.books[3].writer} link={this.reAsign} />
+        {books}
       </div>
     );
   }
